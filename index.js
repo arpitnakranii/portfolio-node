@@ -1,10 +1,18 @@
 import express from 'express'
 
-const app = express()
-app.use("/",(req,res)=>{
-    res.json({massage:"Hello From Express App"})
-})
+var router = express();
 
-app.listen(3000,function(){
+//     res.json({massage:"Hello From Express App"})
+// })
+
+var {register, login}=require('../controller/user')
+router.get('/',function (req,res){
+  res.send("Hello")
+  res.end()
+})
+router.post('/user/register', register);
+router.post('/user/login',login)
+
+router.listen(3000,function(){
     console.log("Server Started")
 })

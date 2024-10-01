@@ -6,8 +6,8 @@ var router = express();
 // })
 
 import userController from './controller/user.js'
-router.get('/',function (req,res){
-  res.json("Hello")
+router.get('/get',function (req,res){
+  res.json("Hello world")
 
 })
 router.post('/user/register', userController.register);

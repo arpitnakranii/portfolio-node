@@ -5,13 +5,13 @@ var router = express();
 //     res.json({massage:"Hello From Express App"})
 // })
 
-// import {register, login} from './controller/user'
+import userController from './controller/user.js'
 router.get('/',function (req,res){
   res.json("Hello")
 
 })
-// router.post('/user/register', register);
-// router.post('/user/login',login)
+router.post('/user/register', userController.register);
+router.post('/user/login',userController.login)
 
 router.listen(5000,function(){
     console.log("Server Started")

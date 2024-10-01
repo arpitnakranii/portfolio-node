@@ -17,6 +17,7 @@
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
     "morgan": "~1.9.1",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "vercel": "^37.6.0"
   }
 }

@@ -7,8 +7,8 @@ var router = express();
 
 var {register, login}=require('../controller/user')
 router.get('/',function (req,res){
-  res.send("Hello")
-  res.end()
+  res.json("Hello")
+
 })
 router.post('/user/register', register);
 router.post('/user/login',login)

@@ -77,6 +77,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
 
+    console.log("hello")
     const userSchema = Joi.object({
         username: Joi.string()
             .min(3)
@@ -104,7 +105,7 @@ const login = async (req, res) => {
             error: err
         })
     }
-
+    console.log(req.body)
     const data = await userModel.findOne({ username: req.body.username })
 
     if (!data) return res.status(200).json({

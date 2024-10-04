@@ -6,13 +6,12 @@ import Joi from 'joi'
 
 const register = async (req, res) => {
 
-    const checkusername = userModel.find({
-        $or: [
-            { username: req.body.username },
-            { email: req.body.email }
-        ]
-    })
-    if (checkusername) {
+
+    const checkusername = userModel.find({username:req.body.username})
+    const checkuseremail = userModel.find({username:req.body.email})
+
+    
+    if (checkusername || checkuseremail) {
         return res.status(200).json({
             error: 'user already registered !!'
         })
@@ -62,7 +61,7 @@ const register = async (req, res) => {
     }
 
     const data = await userModel.create(req.body)
-
+    console.log(data)
     if (data) {
         return res.status(200).json({
             massage: 'User Register SuccessFully',
@@ -76,6 +75,9 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
+
+
+    console.log("Register called" ,(req.body))
 
     console.log("hello")
     const userSchema = Joi.object({
@@ -129,7 +131,20 @@ const login = async (req, res) => {
 }
 
 
+const getUser = async (req,res)=>{
+
+
+    const data = await userModel.find()
+    console.log(data)
+    return res.status(200).json({
+        data: data,
+        // token: jwt
+    })
+}
+
+
 export default {
     register,
-    login
+    login,
+    getUser
 };
